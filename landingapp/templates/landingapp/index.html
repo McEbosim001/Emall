@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emall Connect - Coming Soon</title>
+</head>
+<body>
+    <h1>Connect with Trusted Suppliers. Launch Your Reseller Business.</h1>
+    <p>A verified platform for linking wholesalers and dropshippers across Africa.</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Join the Waitlist</button>
+    </form>
+    {% if success %}
+        <p>You're on the list! We'll notify you at launch.</p>
+    {% endif %}
+</body>
+</html>
