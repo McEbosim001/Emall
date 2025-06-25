@@ -1,14 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import WaitlistForm
 
 def landing_page(request):
-    success = False
-    if request.method == "POST":
+    if request.method == 'POST':
         form = WaitlistForm(request.POST)
         if form.is_valid():
             form.save()
-            success = True
-            form = WaitlistForm()
+            return redirect('landing_page')  # or a success page
     else:
         form = WaitlistForm()
-    return render(request, "landingapp/index.html", {"form": form, "success": success})
+    return render(request, 'landingapp/index.html', {'form': form})
